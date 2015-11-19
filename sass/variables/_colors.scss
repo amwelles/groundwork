@@ -1,0 +1,12 @@
+$palettes: (
+  "black": (
+    base: #111,
+  ),
+  "white": (
+    base: #eee,
+  )
+);
+
+@function palette($palette, $tone: "base") {
+  @return map-get(map-get($palettes, $palette), $tone);
+}

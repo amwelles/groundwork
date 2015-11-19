@@ -1,0 +1,12 @@
+// libraries
+
+// custom
+@import "variables/*";
+@import "abstractions/*";
+@import "base/*";
+@import "components/*";
+
+body {
+  background: palette("white");
+  color: palette("black");
+}

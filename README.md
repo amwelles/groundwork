@@ -6,7 +6,7 @@ A framework for gulp projects.
 
 ~~~
 $ npm install
-$ grunt sass # to compile Sass
-$ grunt clean # to remove existing CSS
-$ grunt watch # to compile Sass whenever a Sass file is saved
+$ gulp sass # to compile Sass
+$ gulp clean # to remove existing CSS
+$ gulp watch # to compile Sass whenever a Sass file is saved
 ~~~

@@ -8,6 +8,7 @@
 @import "components/*";
 
 body {
+  display: flex;
   background: palette("white");
   color: palette("black");
 }

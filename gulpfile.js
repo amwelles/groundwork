@@ -3,6 +3,7 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     livereload = require('gulp-livereload'),
+    autoprefixer = require('gulp-autoprefixer'),
     sassGlob = require('gulp-sass-glob'),
     del = require('del');
 
@@ -15,7 +16,8 @@ gulp.task('clean', function() {
 gulp.task('sass', function() {
   gulp.src('./sass/**/*.scss')
     .pipe(sassGlob())
-    .pipe(sass.sync())
+    .pipe(sass())
+    .pipe(autoprefixer())
     .pipe(gulp.dest('./css'));
 });
 

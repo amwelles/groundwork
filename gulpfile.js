@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     livereload = require('gulp-livereload'),
     sassGlob = require('gulp-sass-glob'),
-    breakpoint = require('breakpoint-sass'),
+    // breakpoint = require('breakpoint-sass'),
     del = require('del');
 
 gulp.task('clean', function() {

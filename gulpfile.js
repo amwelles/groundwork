@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     sassGlob = require('gulp-sass-glob'),
     sassLint = require('gulp-sass-lint'),
+    browserSync = require('browser-sync').create(),
     del = require('del');
 
 gulp.task('clean', function() {
@@ -21,12 +22,20 @@ gulp.task('sass', function() {
     .pipe(sassGlob())
     .pipe(sass())
     .pipe(autoprefixer())
-    .pipe(gulp.dest('./css'));
+    .pipe(gulp.dest('./css'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('watch', function() {
-  livereload.listen();
+
+  browserSync.init({
+    server: {
+      baseDir: "./"
+    }
+  });
+
   gulp.watch('./sass/**/*.scss', ['sass']);
+  gulp.watch("index.html").on('change', browserSync.reload);
 });
 
 gulp.task('default', ['sass', 'watch']);

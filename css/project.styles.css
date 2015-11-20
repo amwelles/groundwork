@@ -4,4 +4,5 @@ body {
   display: -ms-flexbox;
   display: flex;
   background: #eee;
-  color: #111; }
+  color: #111;
+  font-size: 2em; }

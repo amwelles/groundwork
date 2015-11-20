@@ -2,7 +2,6 @@
 
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
-    livereload = require('gulp-livereload'),
     autoprefixer = require('gulp-autoprefixer'),
     sassGlob = require('gulp-sass-glob'),
     sassLint = require('gulp-sass-lint'),

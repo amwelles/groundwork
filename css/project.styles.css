@@ -5,7 +5,3 @@ body {
   display: flex;
   background: #eee;
   color: #111; }
-
-@media (min-width: 768px) {
-  body {
-    background: blue; } }

@@ -16,6 +16,9 @@ gulp.task('clean', function() {
 
 gulp.task('sass', function() {
   gulp.src('./sass/**/*.scss')
+    .pipe(sassLint())
+    .pipe(sassLint.format())
+    .pipe(sassLint.failOnError())
     .pipe(sassGlob())
     .pipe(sass())
     .pipe(autoprefixer())

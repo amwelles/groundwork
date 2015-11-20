@@ -11,3 +11,9 @@ body {
   background: palette("white");
   color: palette("black");
 }
+
+@include breakpoint(768px) {
+  body {
+    background: blue;
+  }
+}

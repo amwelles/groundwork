@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     autoprefixer = require('gulp-autoprefixer'),
     sassGlob = require('gulp-sass-glob'),
+    sassLint = require('gulp-sass-lint'),
     del = require('del');
 
 gulp.task('clean', function() {

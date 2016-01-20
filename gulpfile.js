@@ -5,37 +5,36 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     sassGlob = require('gulp-sass-glob'),
     sassLint = require('gulp-sass-lint'),
-    browserSync = require('browser-sync').create(),
-    del = require('del');
+    livereload = require('gulp-livereload'),
+    del = require('del'),
+    notify = require("gulp-notify"),
+    sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('clean', function() {
   return del([
-    'css'
-  ]);
+    '../css'
+  ], {
+    force: true
+  });
 });
 
 gulp.task('sass', function() {
-  gulp.src('./sass/**/*.scss')
-    .pipe(sassLint())
-    .pipe(sassLint.format())
-    .pipe(sassLint.failOnError())
+  gulp.src('../sass/**/*.scss')
+    // .pipe(sassLint())
+    // .pipe(sassLint.format())
+    // .pipe(sassLint.failOnError())
+    .pipe(sourcemaps.init())
     .pipe(sassGlob())
-    .pipe(sass())
+    .pipe(sass().on('error', notify.onError('<%= error.message %>')))
     .pipe(autoprefixer())
-    .pipe(gulp.dest('./css'))
-    .pipe(browserSync.stream());
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('../css'))
+    .pipe(livereload());
 });
 
 gulp.task('watch', function() {
-
-  browserSync.init({
-    server: {
-      baseDir: "./"
-    }
-  });
-
-  gulp.watch('./sass/**/*.scss', ['sass']);
-  gulp.watch("index.html").on('change', browserSync.reload);
+    livereload.listen();
+    gulp.watch('../sass/**/*.scss', ['sass']);
 });
 
-gulp.task('default', ['sass', 'watch']);
+gulp.task('default', ['clean', 'sass', 'watch']);
